@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Titillium+Web:200,200i,300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+    <title>Rådet for sikker trafik</title>
+
+    <style>
+
+        :root {
+    --color-navigation: #28292C;
+    --color-rubrik_dark: #373D46;
+    --color-rubrik_light: #f0f0f0;
+    --color-tekst_dark: #28292C;
+    --color-tekst_light: #FFFFFF;
+
+    --color-green: #14d405;
+    --color-accent: #414B5A;
+    --color-slogan: rgba(65, 75, 90, 0.87);
+    --color-tekst_footer: rgba(230, 230, 230, 0.57);
+
+}
+
+        img {
+            width: 100%;
+        }
+
+
+        h1, h2, h3, nav li a {
+            font-family: 'Titillium Web', sans-serif;
+            font-weight: 300;
+            margin-left: 1rem;
+             margin-top: 0rem;
+            padding-top: 1rem;
+        }
+
+        p {
+           font-family: 'Open Sans', sans-serif;
+            font-weight: 300;
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+
+        .button {
+            background-color: var(--color-green);
+            border: none;
+            color: var(--color-tekst_light);
+            padding: 1rem 2rem;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            font-family: 'Titillium Web', sans-serif;
+            cursor: pointer;
+        }
+
+
+        /****BURGERMENU*****/
+        body {
+            padding: 0;
+            margin: 0 auto;
+            background-color: var(--color-navigation);
+            max-width: 1280px;
+
+        }
+
+        .nav {
+            display: none;
+        }
+
+        .header {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 100%;
+            background-color: var(--color-navigation);
+            position: fixed;
+            height: 4rem;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .header img {
+            width: 43%;
+            margin: 0.5rem 0rem 0rem 0.3rem;
+        }
+
+        .main {
+            margin: 0 auto;
+            display: block;
+            height: 100%;
+            margin-top: 4rem;
+        }
+
+        .mainInner {
+            display: table;
+            height: 100%;
+            width: 100%;
+            text-align: center;
+        }
+
+        .mainInner div {
+            display: table-cell;
+            vertical-align: middle;
+            font-size: 3rem;
+        }
+
+        #sidebarMenu {
+            height: 100%;
+            position: fixed;
+            left: 8rem;
+            width: 70vw;
+            margin-top: 4rem;
+            transform: translateX(80rem);
+            transition: transform 400ms ease-in-out;
+            background-color: var(--color-accent);
+            z-index: 100;
+        }
+
+        .sidebarMenuInner {
+            margin: 0;
+            padding: 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.10);
+        }
+
+        .sidebarMenuInner li {
+            list-style: none;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+            padding: 2rem;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+        }
+
+        .sidebarMenuInner li span {
+            display: block;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.50);
+        }
+
+        .sidebarMenuInner li a {
+            color: #fff;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1.3rem;
+        }
+
+        input[type="checkbox"]:checked~#sidebarMenu {
+            transform: translateX(0);
+        }
+
+        input[type=checkbox] {
+            transition: all 0.3s;
+            box-sizing: border-box;
+            display: none;
+        }
+
+        .sidebarIconToggle {
+            transition: all 0.3s;
+            box-sizing: border-box;
+            cursor: pointer;
+            position: fixed;
+            z-index: 99;
+            height: 100%;
+            width: 100%;
+            top: 1.5rem;
+            left: 85vw;
+            height: 1.6rem;
+            width: 1.6rem;
+        }
+
+        .spinner {
+            transition: all 0.3s;
+            box-sizing: border-box;
+            position: absolute;
+            height: 0.2rem;
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .horizontal {
+            transition: all 0.3s;
+            box-sizing: border-box;
+            position: relative;
+            float: left;
+            margin-top: 0.3rem;
+        }
+
+        .diagonal.part-1 {
+            position: relative;
+            transition: all 0.3s;
+            box-sizing: border-box;
+            float: left;
+        }
+
+        .diagonal.part-2 {
+            transition: all 0.3s;
+            box-sizing: border-box;
+            position: relative;
+            float: left;
+            margin-top: 0.3rem;
+        }
+
+        input[type=checkbox]:checked~.sidebarIconToggle>.horizontal {
+            transition: all 0.3s;
+            box-sizing: border-box;
+            opacity: 0;
+        }
+
+        input[type=checkbox]:checked~.sidebarIconToggle>.diagonal.part-1 {
+            transition: all 0.3s;
+            box-sizing: border-box;
+            transform: rotate(135deg);
+            margin-top: 0.6rem;
+        }
+
+        input[type=checkbox]:checked~.sidebarIconToggle>.diagonal.part-2 {
+            transition: all 0.3s;
+            box-sizing: border-box;
+            transform: rotate(-135deg);
+            margin-top: -0.6rem;
+        }
+
+    /*****SPLASH******/
+        #splash img {
+            margin-top: 9vh;
+            max-width: 100vw;;
+        }
+
+    /*****SLOGAN*****/
+        .slogan {
+            background-color: var(--color-accent);
+            padding-left: 0rem;
+            color: white;
+            margin-top: -0.5rem;
+        }
+
+        .slogan h3 {
+            font-size: 1rem;
+            padding-bottom: 0.5rem;
+
+        }
+
+    /****KONCEPT*****/
+        #koncept {
+            background-color: var(--color-rubrik_light);
+            color: var(--color-tekst_dark);
+            padding-bottom: 1rem;
+            margin-top: -1rem;
+        }
+
+        #koncept .image {
+            margin: 1rem;
+        }
+
+    /****VIDEO****/
+        #video {
+            background-color: var(--color-rubrik_dark);
+            color: var(--color-tekst_light);
+             margin: 0 auto;
+        }
+
+        #video p {
+            margin-bottom: 0rem;
+        }
+
+        #video .video {
+            text-align: center;
+            padding-bottom: 1.5rem;
+            /*margin: 0 auto;*/
+
+        }
+
+        #video h1 {
+            margin-bottom: 0rem;
+        }
+
+    /****INFO GRAFIK****/
+
+        #info_grafik {
+            background-color: var(--color-rubrik_light);
+            color: var(--color-tekst_dark);
+            }
+
+
+        .figur1 {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+
+            .figur1 img {
+                margin-top: -2rem;
+                margin-left: 2rem;
+                margin-bottom: -1rem;
+            width: 100%
+        }
+
+            .cirkel1{
+               display: none;
+            }
+
+
+        #info_grafik  .piechart {
+            background: #d9d9d9;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            transform: rotate(-90deg);
+
+        }
+
+        #info_grafik .pie1 {
+            fill: none;
+            stroke: var(--color-green);
+            stroke-width: 200;
+            stroke-dasharray: 158 632;
+            transition: all 1s ease;
+
+        }
+
+    /***FIRGUR 2*****/
+
+
+         .figur2 {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+
+            .figur2 img {
+                margin-top: -3rem;
+                margin-left: 3.3rem;
+                margin-bottom: -1rem;
+            width: 100%
+        }
+
+            .cirkel2{
+               display: none;
+            }
+
+
+        #info_grafik .pie2 {
+            fill: none;
+            stroke: var(--color-green);
+            stroke-width: 200;
+            stroke-dasharray: 443 632;
+            transition: all 1s ease;
+
+        }
+
+        /***FIGUR 3****/
+
+        .figur3 {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+
+            .figur3 img {
+                margin-top: -2rem;
+                margin-left: 2rem;
+                margin-bottom: -1rem;
+            width: 100%
+        }
+
+            .cirkel3{
+               display: none;
+            }
+
+
+        #info_grafik .pie3 {
+            fill: none;
+            stroke: var(--color-green);
+            stroke-width: 200;
+            stroke-dasharray: 455 632;
+            transition: all 1s ease;
+
+        }
+
+    /****QUIZ****/
+
+        #quiz {
+            background-color: var(--color-rubrik_dark);
+            color: var(--color-tekst_light);
+            padding-bottom: 1.5rem;
+        }
+
+        #quiz .column2 {
+            text-align: center;
+           /* margin: auto;*/
+        }
+
+   /*****SLOGAN BUND*****/
+
+        #slogan_bund {
+            background-image: url(img/slogan_banner.png);
+            background-size: 100%;
+            background-repeat: no-repeat;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+        .slogan_bund h3 {
+            background-color: var(--color-slogan);
+           /*  padding: 0.5rem;
+            padding-left: 0rem; */
+            color: white;
+            width: 50%;
+            padding: 0.3rem;
+            margin-top: 2.7rem;
+            margin-left: 0rem;
+            font-size: 1rem;
+        }
+
+    /***FOOTER**/
+        footer {
+            margin-top: -1rem;
+        }
+
+        footer p.top {
+             color: var(--color-tekst_footer);
+            font-family: 'Titillium Web', sans-serif;
+            padding-top: 2rem;
+            font-weight: 200;
+        }
+
+        footer p.bund {
+             color: var(--color-tekst_footer);
+            font-family: 'Titillium Web', sans-serif;
+            font-weight: 200;
+            margin-top: 0rem;
+            padding-bottom: 1rem;
+        }
+
+        footer img {
+            max-width: 50%;
+            margin-left: 5.5rem;
+
+        }
+
+
+
+
+
+
+/********************IPAD************************************/
+
+
+        @media only screen and (min-width:600px) {
+
+             h1, h2, h3, nav li a {
+            font-family: 'Titillium Web', sans-serif;
+            font-weight: 300;
+            margin-left: 1rem;
+             margin-top: 0rem;
+            padding-top: 1rem;
+                 font-size: 2rem;
+        }
+
+        p {
+           font-family: 'Open Sans', sans-serif;
+            font-weight: 300;
+            margin-left: 1rem;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .button {
+            padding: 1.7rem 4rem;
+            font-size: 1.8rem;
+        }
+
+
+        /****BURGERMENU*****/
+
+        .header {
+            height: 6rem;
+        }
+
+        .header img {
+            width: 25%;
+            margin: 0.6rem 0rem 0rem 0.3rem;
+        }
+
+
+        #sidebarMenu {
+            left: 46rem;
+            width: 18rem;
+            margin-top: 6rem;
+        }
+
+
+        .sidebarMenuInner li a {
+            font-size: 1.5rem;
+        }
+
+
+        .sidebarIconToggle {
+            top: 2.5rem;
+            left: 60rem;
+            height: 2rem;
+            width: 2rem;
+        }
+
+    /*****SPLASH******/
+        #splash img {
+            max-height: 100%;
+            max-width: 100%;
+        }
+
+    /*****SLOGAN*****/
+        .slogan {
+            position: absolute;
+            z-index: 1;
+            padding: 0.5rem;
+            margin-top: -6rem;
+            width: 40%;
+            background-color: var(--color-slogan);
+        }
+
+        .slogan h3 {
+            font-weight: 200;
+             font-size: 2rem;
+            margin-bottom: -0.2rem;
+            padding-bottom: 1rem;
+            }
+
+    /****KONCEPT*****/
+        #koncept {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 1rem;
+            margin-top: -0.2rem;
+            padding-top: 3rem;
+            padding-bottom: 4rem;
+        }
+
+            #koncept .image {
+            margin-top: 4rem;
+            }
+
+
+    /****VIDEO****/
+        #video {
+            padding-top: 3rem;
+            padding-bottom: 4rem;
+        }
+
+        #video video {
+            /* margin-left: 1rem; */
+            height: 40rem;
+            width: 62rem;
+        }
+
+        #video h1 {
+            margin-bottom: 0rem;
+        }
+
+    /****INFO GRAFIK****/
+
+         #info_grafik {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr)
+
+            }
+
+
+        .figur1 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 1rem;
+            margin-top: 3.5rem;
+            margin-right: 1rem;
+        }
+
+
+            .figur1 img {
+                margin-left: 1rem;
+            width: 160%;
+        }
+
+            .cirkel1{
+                display: block;
+                margin-top: 0.5rem;
+                margin-left: 5.5rem;
+            }
+
+
+     /***FIRGUR 2*****/
+
+
+         .figur2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+             margin-top: 1rem;
+        }
+
+
+            .figur2 img {
+                margin-top: -1rem;
+                margin-left: 1rem;
+                margin-bottom: 0rem;
+            width: 160%
+        }
+
+            .cirkel2{
+               display: block;
+                margin-top: 2rem;
+                margin-left: 4.5rem;
+            }
+
+
+        /***FIGUR 3****/
+
+        .figur3 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            margin-top: 1rem;
+        }
+
+
+            .figur3 img {
+                margin-top: -1rem;
+                margin-left: -1rem;
+                margin-bottom: -1rem;
+            width: 160%
+        }
+
+            .cirkel3{
+               display: block;
+                margin-top: 1rem;
+                margin-left: 5.5rem;
+            }
+
+    /****QUIZ****/
+
+        #quiz {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            padding-top: 3rem;
+            padding-bottom: 4rem;
+        }
+
+        #quiz a {
+            margin-top: 5rem;
+            margin-left: 8rem;
+        }
+
+
+            #quiz .column p {
+                width: 110%;
+                line-height: 2rem;
+            }
+
+
+   /*****SLOGAN BUND*****/
+              #slogan_bund {
+                  height: 100%;
+            /* padding-top: 1rem;
+            padding-bottom: 0.5rem; */
+        }
+        .slogan_bund h3 {
+            background-color: var(--color-slogan);
+           /*  padding: 0.5rem;
+            padding-left: 0rem; */
+            color: white;
+            width: 40%;
+            padding: 0.3rem;
+            margin-top: 10.4rem;
+            margin-left: 0rem;
+            font-size: 2rem;
+        }
+
+    /***FOOTER**/
+        footer {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            margin-top: -1.5rem;
+        }
+
+        footer p.top {
+            font-weight: 300;
+            margin-left: 1.3rem;
+        }
+
+        footer p.bund {
+            font-weight: 300;
+            margin-top: 2.5rem;
+            margin-left: 3rem;
+            padding-top: 1rem;
+            padding-bottom: 2rem;
+            line-height: 3rem;
+        }
+
+        footer img {
+            margin-top: 0.5rem;
+        }
+        }
+
+
+
+
+
+
+
+
+
+
+/********************DESKTOP************************************/
+
+
+        @media only screen and (min-width:1025px) {
+
+
+            p {
+                font-size: 1.3rem;
+            }
+
+    /*****NAVGIGATION*******/
+        .header {
+            height: 4.7rem;
+        }
+
+        .header img {
+            width: 16vw;
+            margin: 0.5rem;
+        }
+
+        .main {
+           display: none;
+        }
+
+        .mainInner {
+           display: none;
+        }
+
+        .mainInner div {
+            display: none;
+        }
+
+        #sidebarMenu {
+            display: none;
+        }
+
+        .sidebarMenuInner {
+            display: none;
+        }
+
+        .sidebarMenuInner li span {
+            display: none;
+        }
+
+        .sidebarIconToggle {
+          display: none;
+        }
+
+
+    .sidebarMenuInner li {
+            display: none;
+        }
+
+        .sidebarMenuInner li a {
+            display: none;
+        }
+
+.nav {
+    display: block;
+            }
+
+.nav a {
+    font-size: 1.6rem;
+    text-align: center;
+    display: inline;
+    margin-left: 3rem;
+    margin-bottom: 1em;
+    color: var(--color-tekst_light);
+    text-decoration: none;
+
+
+}
+
+.nav a:hover {
+    color: var(--color-green);
+}
+
+
+ ul {
+    position: fixed;
+    float: right;
+    top: 0.5rem;
+     margin-left: 37rem;
+    /*left: 2rem;*/
+
+    }
+
+.nav li {
+    display: inline;
+    }
+
+
+    /*****SLOGAN*****/
+        .slogan {
+            padding: 0.3rem;
+            margin-top: -5.68rem;
+            width: 42%;
+        }
+
+        .slogan h3 {
+            font-weight: 200;
+            }
+
+    /****KONCEPT*****/
+        #koncept {
+            margin-top: -0.3rem;
+            padding-top: 2rem;
+            padding-bottom: 4rem;
+
+        }
+
+            #koncept p {
+                line-height: 2rem;
+            }
+
+
+    /****VIDEO****/
+        #video {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            padding-top: 3rem;
+            padding-bottom: 4rem;
+        }
+
+        #video video {
+           /*  margin-top: 2rem;
+            margin-left: 2.5rem; */
+           height: 100%;
+            width: 100%;
+        }
+
+            #video .video {
+            margin-top: 2rem;
+                margin-right: 1rem;
+        }
+
+
+    /****INFO GRAFIK****/
+
+            #info_grafik {
+                padding-top: 2rem;
+            }
+
+            .figur1 {
+                margin-top: 1rem;
+            }
+
+            .figur1 img {
+            width: 150%;
+                margin-left: 1.5rem;
+        }
+
+            .cirkel1{
+                display: block;
+                margin-top: 1rem;
+                margin-left: 8rem;
+            }
+
+
+     /***FIRGUR 2*****/
+
+
+         .figur2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+             margin-top: -1rem;
+        }
+
+
+            .figur2 img {
+                margin-top: -2rem;
+                margin-left: 1rem;
+                margin-bottom: 0rem;
+            width: 160%
+        }
+
+            .cirkel2{
+               display: block;
+                margin-top: 3.5rem;
+                margin-left: 8rem;
+            }
+
+
+        /***FIGUR 3****/
+
+        .figur3 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            margin-top: -1rem;
+        }
+
+
+            .figur3 img {
+                margin-top: -1rem;
+                margin-left: 2rem;
+                margin-bottom: -1rem;
+            width: 160%
+        }
+
+            .cirkel3{
+               display: block;
+                margin-top: 3.5rem;
+                margin-left: 8rem;
+            }
+
+    /****QUIZ****/
+
+        #quiz {
+            padding-top: 3rem;
+            padding-bottom: 5rem;
+        }
+
+        #quiz a {
+            margin-top: 4rem;
+            margin-left: 15.5rem;
+        }
+
+
+   /*****SLOGAN BUND*****/
+        .slogan_bund h3 {
+            font-weight: 200;
+        }
+
+    /***FOOTER**/
+        footer {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        footer p.top {
+            font-weight: 200;
+            margin-top: 2rem;
+        }
+
+        footer p.bund {
+            font-weight: 200;
+            margin-top: 3.3rem;
+            padding-top: 0rem;
+            padding-bottom: 0rem;
+            line-height: 3.5rem;
+        }
+
+        footer img {
+            margin-top: 0.7rem;
+        }
+
+
+        }
+
+
+        @media only screen and (min-width:1281px) {
+
+            body {
+                background-color: black;
+            }
+            .header img {
+                width: 13vw;
+            }
+
+            .header {
+                max-width: 1280px;
+            }
+
+            .slogan_bund h3 {
+                margin-top: 14rem;
+            }
+
+            footer {
+                background-color: var(--color-navigation);
+                margin-top: -2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-------NAVIGATION------>
+    <header>
+        <nav>
+            <div class="header">
+                <ul class="nav">
+                    <li><a href="#koncept">Kampagne Info</a></li>
+                    <li><a href="#video">Video</a></li>
+                    <li><a href="#quiz">Quiz</a></li>
+                    <li><a href="video.html">Video Portfolio</a></li>
+                </ul>
+                <a href="index.html"><img src="grafik/logo.png" alt="logo"></a>
+            </div>
+            <!-----BURGER IKON------>
+            <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+            <label for="openSidebarMenu" class="sidebarIconToggle">
+                <div class="spinner diagonal part-1"></div>
+                <div class="spinner horizontal"></div>
+                <div class="spinner diagonal part-2"></div>
+            </label>
+            <!-----MENU SLIDE OUT------>
+            <div id="sidebarMenu">
+                <ul class="sidebarMenuInner">
+                    <li><a href="#koncept">Kampagne Info</a></li>
+                    <li><a href="#video">Video</a></li>
+                    <li><a href="#quiz">Quiz</a></li>
+                    <li><a href="video.html">Video Portfolio</a></li>
+                </ul>
+            </div>
+
+        </nav>
+
+    </header>
+
+    <!----------SPLASH-------------->
+    <section id="splash">
+        <picture>
+            <source media="(min-width: 1000px)" srcset="img/header_desktop_web.jpg">
+            <source media="(min-width: 375px)" srcset="img/header_desktop_web.jpg">
+            <img src="img/header_desktop_web.jpg" alt="splashbilled">
+        </picture>
+
+        <div class="slogan">
+            <h3>Hav styr på dit udstyr !</h3>
+        </div>
+    </section>
+
+
+    <!-------KONCEPT INFO------>
+    <section id="koncept">
+        <div class="text_koncept">
+            <h1>Kampagne Info</h1>
+            <p>Denne kampagne har til formål at sætte fokus på 65+ sikkerhed i trafikken. Vi mener hos Rådet for Sikker Trafik, at alt for mange dør i trafikken hvert år og det vil vi gerne hjælpe med at nedbringe.
+                <br>
+                <br>
+                Denne specifikke kampagne skærper opmærksomheden på, hvilke faktorer der spiller ind på de forskellige uheld og hvordan de nemmest undgås. I dette tilfælde er UDSTYR en rigtig vigtig rolle i bekæmpelsen af cykelulykker.</p>
+        </div>
+
+        <div class="image">
+            <img src="img/DSC_4276red.jpg" alt="kampagne billede">
+        </div>
+    </section>
+
+    <!-------VIDEO------>
+    <section id="video">
+        <div class="text_video">
+            <h1>Kampagne Video</h1>
+            <p>Den lille video sætter fokus på, hvor nemt og simpelt det kan gøres, før du kan føle dig sikker i trafikken.
+                <br>
+                <br>
+                Du behøver ikke sætte din hverdag over styr.<br> Hav styr på dit udstyr !</p>
+        </div>
+
+        <div class="video">
+            <video width="350" height="240" controls>
+                <source src="video/jernpladsen.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
+
+    <!-----INFO GRAFIK---->
+    <section id="info_grafik">
+        <div class="text_info">
+            <h1>Vidste du at ?</h1>
+            <p>Hvert år dør alt for mange i trafikken. Det kan være svært at sætte sig ind i, hvordan det kan påvirke dig og dine kære. Vi håber dette kan få dig at tænke over hvor lidt der skal til at redde dit eget, eller nogen du kenders liv.</p>
+        </div>
+
+        <div class="figur1">
+            <img src="grafik/cykel.svg" alt="cykel">
+            <div class="cirkel1">
+                <svg class="piechart">
+                    <circle r="100" cx="75" cy="75" class="pie1" />
+                </svg>
+            </div>
+        </div>
+
+        <div class="figur2">
+            <img src="grafik/hjelm.svg" alt="cykelhjelm">
+            <div class="cirkel2">
+                <svg class="piechart">
+                    <circle r="100" cx="75" cy="75" class="pie2" />
+                </svg>
+            </div>
+        </div>
+
+
+        <div class="figur3">
+            <img src="grafik/vest.svg" alt="vest">
+            <div class="cirkel3">
+                <svg class="piechart">
+                    <circle r="100" cx="75" cy="75" class="pie3" />
+                </svg>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!----QUIZ---->
+    <section id="quiz">
+        <div class="column">
+            <h1>Den store udstyrs test</h1>
+            <p>Tag den store udstyrs test og få mere viden omkring udstyr, statestikker mm. Sådan så du er klar til at tage ud i trafikken på den sikreste måde. </p>
+        </div>
+
+        <div class="column2">
+            <a class="button" href="spil.html">Start testen</a>
+        </div>
+    </section>
+
+
+    <!------SLOGAN BUND----->
+    <section id="slogan_bund">
+        <div class="slogan_bund">
+            <h3>- Har du styr på dit udstyr ?</h3>
+        </div>
+    </section>
+
+
+    <footer>
+        <p class="top">Følg Rådet for Sikker Trafik på de sociale medier<img src="grafik/social.png" alt="social media"></p>
+
+        <p class="bund">Rådet for Sikker Trafik <br> Lersø Parkallé 111, 2100 København Ø</p>
+
+    </footer>
+    <script>
+
+    </script>
+</body>
+
+</html>
