@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang=“da”>
+
+<head>
+    <!DOCTYPE html>
+    <html lang="da">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Titillium+Web:200,200i,300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+        <title>Rådet for sikker trafik</title>
+
+
+        <style>
+            :root {
+                --color-navigation: #28292C;
+                --color-rubrik_dark: #373D46;
+                --color-rubrik_light: #f0f0f0;
+                --color-tekst_dark: #28292C;
+                --color-tekst_light: #FFFFFF;
+
+                --color-green: #14d405;
+                --color-accent: #414B5A;
+                --color-slogan: rgba(65, 75, 90, 0.87);
+                --color-tekst_footer: rgba(230, 230, 230, 0.57);
+
+            }
+
+
+            body {
+                padding: 0;
+                margin: 0;
+            }
+
+
+            h1,
+            h2,
+            h3,
+            nav li a {
+                font-family: 'Titillium Web', sans-serif;
+                font-weight: 300;
+                margin-left: 1rem;
+                margin-top: 0rem;
+                padding-top: 1rem;
+            }
+
+            p {
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 300;
+                margin-left: 1rem;
+                margin-right: 1rem;
+                color: white;
+            }
+
+
+
+            /*****NAVGIGATION*******/
+            .header {
+                display: block;
+                margin: 0 auto;
+                width: 100%;
+                max-width: 100%;
+                background-color: var(--color-navigation);
+                position: fixed;
+                height: 4rem;
+                overflow: hidden;
+                z-index: 10;
+            }
+
+            .header img {
+                width: 13%;
+                margin: 0.5rem;
+            }
+
+            .nav {
+                display: block;
+            }
+
+            .nav a {
+                font-size: 1.5rem;
+                text-align: center;
+                display: inline;
+                margin-left: 3rem;
+                margin-bottom: 1em;
+                color: var(--color-tekst_light);
+                text-decoration: none;
+
+
+            }
+
+            .nav a:hover {
+                color: var(--color-green);
+            }
+
+
+            ul {
+                position: fixed;
+                float: right;
+                top: 0rem;
+                right: 2rem;
+
+            }
+
+            .nav li {
+                display: inline;
+            }
+
+            /*****START SKÆRM*******/
+
+
+            #baggrund {
+                position: relative;
+                width: 100vw;
+                height: 56.25vw;
+                overflow: hidden;
+                background-color: var(--color-accent);
+                background-size: 100%;
+
+                /*  touch-action: none;*/
+                -moz-user-select: none;
+                -webkit-user-select: none;
+                user-select: none;
+            }
+
+
+            #skygge {
+
+                position: absolute;
+                top: 10vw;
+                left: 10vw;
+                width: 80vw;
+                height: 40vw;
+                background-image: url(grafik/spil/skygge.svg);
+                background-size: 100%;
+
+                overflow: hidden;
+
+            }
+
+            #overskrift_navn {
+
+                position: absolute;
+                top: 7vw;
+                left: 23vw;
+                width: 55vw;
+                height: 10vw;
+                background-image: url(grafik/spil/overskrift_navn.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+
+
+            }
+
+            #text_start {
+                position: absolute;
+                top: 18vw;
+                left: 14vw;
+                width: 73vw;
+                color: white;
+                line-height: 3vw;
+                font-size: 2vw;
+                text-align: center;
+
+            }
+
+            #start_knap {
+
+                position: absolute;
+                width: 30vw;
+                height: 30vw;
+                top: 34vw;
+                left: 36vw;
+                background-image: url(grafik/spil/startknap.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+                cursor: pointer;
+
+            }
+
+            #logo {
+
+                position: absolute;
+                top: 43vw;
+                left: 74vw;
+                width: 15vw;
+                height: 10vw;
+                background-image: url(grafik/spil/sikkertrafik-center-logo-white.png);
+                background-repeat: no-repeat;
+                background-size: 100%;
+
+            }
+
+
+            /********FRAME 1*********/
+
+            #luk {
+                position: absolute;
+                top: 6vw;
+                left: 92vw;
+                width: 6vw;
+                height: 10vw;
+                background-image: url(grafik/spil/luk.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+                cursor: pointer;
+
+            }
+
+            #progres1 {
+                position: absolute;
+                top: 12vw;
+                left: 31vw;
+                width: 40vw;
+                height: 20vw;
+                background-image: url(grafik/spil/progres1.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+
+            }
+
+
+            #sprg1 {
+                position: absolute;
+                top: 19vw;
+                left: 26vw;
+                width: 50vw;
+                height: 30vw;
+                background-image: url(grafik/spil/sp%C3%B8rgsm%C3%A5l%201.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+
+            }
+
+            #svar1_1 {
+                position: absolute;
+                top: 41vw;
+                left: 20vw;
+                width: 20vw;
+                height: 10vw;
+                background-image: url(grafik/spil/svar%201.1.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+                cursor: pointer;
+
+            }
+
+            #svar1_2 {
+                position: absolute;
+                top: 41vw;
+                left: 42vw;
+                width: 20vw;
+                height: 10vw;
+                background-image: url(grafik/spil/svar1.2.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+                cursor: pointer;
+
+            }
+
+            #svar1_3 {
+                position: absolute;
+                top: 41vw;
+                left: 64vw;
+                width: 20vw;
+                height: 10vw;
+                background-image: url(grafik/spil/svar%201.3.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+                cursor: pointer;
+
+            }
+
+
+            #rigtig {
+                position: absolute;
+                top: 18vw;
+                left: 30vw;
+                width: 40vw;
+                height: 10vw;
+                background-image: url(grafik/spil/rigtig.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+
+            }
+
+            #text_sprg1 {
+                position: absolute;
+                top: 26vw;
+                left: 15vw;
+                width: 73vw;
+                color: white;
+                line-height: 3vw;
+                font-size: 2vw;
+                text-align: center;
+
+            }
+
+            #next {
+                position: absolute;
+                top: 40vw;
+                left: 68vw;
+                width: 20vw;
+                height: 10vw;
+                background-image: url(grafik/spil/next.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+                cursor: pointer;
+
+            }
+
+            #forkert {
+                position: absolute;
+                top: 18vw;
+                left: 30vw;
+                width: 40vw;
+                height: 10vw;
+                background-image: url(grafik/spil/forkert.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+
+            }
+
+
+
+            /********FRAME 2*********/
+
+            #progres2 {
+                position: absolute;
+                top: 12vw;
+                left: 31vw;
+                width: 40vw;
+                height: 20vw;
+                background-image: url(grafik/spil/progres2.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+
+            }
+
+
+            #sprg2 {
+                position: absolute;
+                top: 19vw;
+                left: 26vw;
+                width: 50vw;
+                height: 30vw;
+                background-image: url(grafik/spil/sp%C3%B8rgsm%C3%A5l%202.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+
+
+            }
+
+            #svar2_1 {
+                position: absolute;
+                top: 41vw;
+                left: 20vw;
+                width: 20vw;
+                height: 10vw;
+                background-image: url(grafik/spil/svar2.1.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+                cursor: pointer;
+
+
+
+            }
+
+            #svar2_2 {
+                position: absolute;
+                top: 41vw;
+                left: 42vw;
+                width: 20vw;
+                height: 10vw;
+                background-image: url(grafik/spil/svar2.2.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+                cursor: pointer;
+
+
+            }
+
+            #svar2_3 {
+                position: absolute;
+                top: 41vw;
+                left: 64vw;
+                width: 20vw;
+                height: 10vw;
+                background-image: url(grafik/spil/svar%202.3.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+                cursor: pointer;
+
+            }
+
+            #text_sprg2 {
+                position: absolute;
+                top: 26vw;
+                left: 15vw;
+                width: 73vw;
+                color: white;
+                line-height: 3vw;
+                font-size: 2vw;
+                text-align: center;
+
+            }
+
+
+
+
+            /********FRAME 3*********/
+
+            #progres3 {
+                position: absolute;
+                top: 12vw;
+                left: 31vw;
+                width: 40vw;
+                height: 20vw;
+                background-image: url(grafik/spil/progres3.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+
+            }
+
+
+            #sprg3 {
+                position: absolute;
+                top: 19vw;
+                left: 26vw;
+                width: 50vw;
+                height: 30vw;
+                background-image: url(grafik/spil/sp%C3%B8rgsm%C3%A5l%203.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+
+            }
+
+            #svar3_1 {
+                position: absolute;
+                top: 41vw;
+                left: 20vw;
+                width: 20vw;
+                height: 10vw;
+                background-image: url(grafik/spil/svar3.1.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+                cursor: pointer;
+
+
+            }
+
+            #svar3_2 {
+                position: absolute;
+                top: 41vw;
+                left: 42vw;
+                width: 20vw;
+                height: 10vw;
+                background-image: url(grafik/spil/svar3.2.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+                cursor: pointer;
+
+
+            }
+
+            #svar3_3 {
+                position: absolute;
+                top: 41vw;
+                left: 64vw;
+                width: 20vw;
+                height: 10vw;
+                background-image: url(grafik/spil/svar%203.3.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+                cursor: pointer;
+
+
+
+            }
+
+            #text_sprg3 {
+                position: absolute;
+                top: 26vw;
+                left: 15vw;
+                width: 73vw;
+                color: white;
+                line-height: 3vw;
+                font-size: 2vw;
+                text-align: center;
+
+            }
+
+
+            /********FRAME 4*********/
+
+            #progres4 {
+                position: absolute;
+                top: 12vw;
+                left: 31vw;
+                width: 40vw;
+                height: 20vw;
+                background-image: url(grafik/spil/progres4.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+
+            }
+
+
+            #sprg4 {
+                position: absolute;
+                top: 19vw;
+                left: 26vw;
+                width: 50vw;
+                height: 30vw;
+                background-image: url(grafik/spil/sp%C3%B8rgsm%C3%A5l%204.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+
+            }
+
+            #svar4_1 {
+                position: absolute;
+                top: 41vw;
+                left: 20vw;
+                width: 20vw;
+                height: 10vw;
+                background-image: url(grafik/spil/svar4.1.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+                cursor: pointer;
+
+            }
+
+            #svar4_2 {
+                position: absolute;
+                top: 41vw;
+                left: 64vw;
+                width: 20vw;
+                height: 10vw;
+                background-image: url(grafik/spil/svar%204.2.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+                cursor: pointer;
+
+            }
+
+            #text_sprg4 {
+                position: absolute;
+                top: 26vw;
+                left: 15vw;
+                width: 73vw;
+                color: white;
+                line-height: 3vw;
+                font-size: 2vw;
+                text-align: center;
+
+            }
+
+
+            /********FRAME 5*********/
+
+            #progres5 {
+                position: absolute;
+                top: 12vw;
+                left: 31vw;
+                width: 40vw;
+                height: 20vw;
+                background-image: url(grafik/spil/progres5.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+            }
+
+
+            #sprg5 {
+                position: absolute;
+                top: 19vw;
+                left: 26vw;
+                width: 50vw;
+                height: 30vw;
+                background-image: url(grafik/spil/sp%C3%B8rgsm%C3%A5l%205.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+            }
+
+            #svar5_1 {
+                position: absolute;
+                top: 41vw;
+                left: 20vw;
+                width: 20vw;
+                height: 10vw;
+                background-image: url(grafik/spil/svar%205.1.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+                cursor: pointer;
+            }
+
+            #svar5_2 {
+                position: absolute;
+                top: 41vw;
+                left: 42vw;
+                width: 20vw;
+                height: 10vw;
+                background-image: url(grafik/spil/svar%205.2.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+                cursor: pointer;
+
+            }
+
+            #svar5_3 {
+                position: absolute;
+                top: 41vw;
+                left: 64vw;
+                width: 20vw;
+                height: 10vw;
+                background-image: url(grafik/spil/svar%205.3.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+                cursor: pointer;
+
+            }
+
+            #text_sprg5 {
+                position: absolute;
+                top: 26vw;
+                left: 15vw;
+                width: 73vw;
+                color: white;
+                line-height: 3vw;
+                font-size: 2vw;
+                text-align: center;
+
+            }
+
+
+            /********FRAME 6*********/
+
+            #tak {
+
+                position: absolute;
+                top: 7vw;
+                left: 22vw;
+                width: 55vw;
+                height: 10vw;
+                background-image: url(grafik/spil/tak.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+            }
+
+
+            #text_slut {
+                position: absolute;
+                top: 18vw;
+                left: 14vw;
+                width: 73vw;
+                color: white;
+                line-height: 3vw;
+                font-size: 2vw;
+                text-align: center;
+            }
+
+
+            #nyhed {
+
+                position: absolute;
+                width: 20vw;
+                height: 20vw;
+                top: 40vw;
+                left: 41vw;
+                background-image: url(grafik/spil/nyhed.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+                cursor: pointer;
+
+            }
+
+
+            #afslut {
+                position: absolute;
+                top: 40vw;
+                left: 68vw;
+                width: 20vw;
+                height: 10vw;
+                background-image: url(grafik/spil/afslut.svg);
+                background-repeat: no-repeat;
+                background-size: 100%;
+                cursor: pointer;
+
+            }
+
+            /* effekter */
+            .hide {
+                visibility: hidden;
+            }
+
+            .show {
+                visibility: visible;
+            }
+
+        </style>
+    </head>
+
+<body>
+
+    <!-------NAVIGATION------>
+    <header>
+        <nav>
+            <div class="header">
+                <ul class="nav">
+                    <li><a href="index.html#koncept">Kampagne Info</a></li>
+                    <li><a href="index.html#video">Video</a></li>
+                    <li><a href="index.html#quiz">Quiz</a></li>
+                    <li><a href="video.html">Video Portfolio</a></li>
+                </ul>
+                <a href="index.html"><img src="grafik/logo.png" alt="logo"></a>
+            </div>
+        </nav>
+
+    </header>
+
+    <div id="baggrund" class="hide">
+
+
+        <!---------- START SKÆRM ---------->
+
+        <div id="skygge"></div>
+        <div id="overskrift_navn" class="hide"></div>
+        <div id="text_start" class="hide">
+            <p>Den store udstyrs test, giver dig et overblik over, hvilket udstyr, der kan redde dit liv og hvordan det bedst bruges.
+                <br>
+                <br>
+                Klik på kappen nedenunder for at starte testen.</p>
+        </div>
+        <div id="start_knap" class="hide"></div>
+        <div id="logo" class="hide"></div>
+
+
+        <!---------- FRAME 1 ---------->
+
+        <a href="index.html" id="luk" class=""></a>
+        <div id="progres1" class="hide"></div>
+        <div id="sprg1" class="hide"></div>
+        <div id="svar1_1" class="hide"></div>
+        <div id="svar1_2" class="hide"></div>
+        <div id="svar1_3" class="hide"></div>
+
+
+        <div id="rigtig" class="hide"></div>
+        <div id="forkert" class="hide"></div>
+        <div id="text_sprg1" class="hide">
+            <p>Din chance for påkørsel som cyklist halveres (50%) ved brug af pangfarver. Dette behøver ikke være en vest, det kan også være en hjelm, handsker eller rygsæks hylster i pangfarver.</p>
+        </div>
+        <div id="next" class="hide"></div>
+
+        <!---------- FRAME 2 ---------->
+        <div id="progres2" class="hide"></div>
+        <div id="sprg2" class="hide"></div>
+        <div id="svar2_1" class="hide"></div>
+        <div id="svar2_2" class="hide"></div>
+        <div id="svar2_3" class="hide"></div>
+
+        <div id="text_sprg2" class="hide">
+            <p>Pangfarver ses bedst i dagslys eller tusmørke. Når det bliver rigtig mørkt, ses pangerne mindre og det er derfor vigtigt altid at huske reflekser og lygter også.</p>
+        </div>
+
+
+        <!---------- FRAME 3 ---------->
+        <div id="progres3" class="hide"></div>
+        <div id="sprg3" class="hide"></div>
+        <div id="svar3_1" class="hide"></div>
+        <div id="svar3_2" class="hide"></div>
+        <div id="svar3_3" class="hide"></div>
+
+        <div id="text_sprg3" class="hide">
+            <p>Din chance for alvorlige hovedskader halveres (50%) ved brug af cykelhjelm.</p>
+        </div>
+
+        <!---------- FRAME 4 ---------->
+        <div id="progres4" class="hide"></div>
+        <div id="sprg4" class="hide"></div>
+        <div id="svar4_1" class="hide"></div>
+        <div id="svar4_2" class="hide"></div>
+
+        <div id="text_sprg4" class="hide">
+            <p>Det er ikke lovpligtigt at køre med cykelhjelm, men af alle cykelulykker er 22% alvorlige hovedskader. Og hvis du ikke kan lide at have hjelm på, findes der alternativer som fx Hövding airbag hjelm.</p>
+        </div>
+
+
+        <!---------- FRAME 5 ---------->
+        <div id="progres5" class="hide"></div>
+        <div id="sprg5" class="hide"></div>
+        <div id="svar5_1" class="hide"></div>
+        <div id="svar5_2" class="hide"></div>
+        <div id="svar5_3" class="hide"></div>
+
+        <div id="text_sprg5" class="hide">
+            <p>Soloulykker forårsager en 3. del af alle cykeluheld, dette skyldes oftest at man mister balancen og vælter. Dette kan afhjælpes med en uni-sex cykel, som har en lav indstigning, så det er nemmere at stige af og på.</p>
+        </div>
+        <div id="afslut" class="hide"></div>
+
+        <!---------- FRAME 6 ---------->
+
+        <div id="tak" class="hide"></div>
+        <div id="text_slut" class="hide">
+            <p>Vi håber du føler dig en smule klogere og har fået en viden omkring, hvordan du kan blive mere sikker i trafikken.
+                <br>
+                <br>
+                Nedenfor har du mulighed for at tilmelde dig vores nyhedsbrev, hvis du vil opdateres med nye kampagner, viden mm. For at komme tilbage til kampagnesiden, tryk blot på luk knappen i højre hjørne.</p>
+        </div>
+        <div id="nyhed" class="hide"></div>
+
+        <script src="script.js"></script>
+
+    </div>
+
+</body>
+
+</html>
