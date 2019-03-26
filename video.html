@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Titillium+Web:200,200i,300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+    <title>Rådet for sikker trafik</title>
+    <meta name="rådet for sikker trafik kampagne 65+">
+
+    <style>
+
+        :root {
+    --color-navigation: #28292C;
+    --color-rubrik_dark: #373D46;
+    --color-rubrik_light: #f0f0f0;
+    --color-tekst_dark: #28292C;
+    --color-tekst_light: #FFFFFF;
+
+    --color-green: #14d405;
+    --color-accent: #414B5A;
+    --color-slogan: rgba(65, 75, 90, 0.87);
+    --color-tekst_footer: rgba(230, 230, 230, 0.57);
+
+}
+
+        img {
+            width: 100%;
+        }
+
+
+        h1, h2, h3, nav li a {
+            font-family: 'Titillium Web', sans-serif;
+            font-weight: 300;
+            margin-left: 1rem;
+             margin-top: 0rem;
+            padding-top: 1rem;
+        }
+
+        p {
+           font-family: 'Open Sans', sans-serif;
+            font-weight: 300;
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+
+
+        /****BURGERMENU*****/
+        body {
+            padding: 0;
+            margin: 0 auto;
+            background-color: var(--color-navigation);
+            max-width: 1280px;
+
+        }
+
+        .nav {
+            display: none;
+        }
+
+        .header {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 100%;
+            background-color: var(--color-navigation);
+            position: fixed;
+            height: 4rem;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .header img {
+            width: 43%;
+            margin: 0.5rem 0rem 0rem 0.3rem;
+        }
+
+        .main {
+            margin: 0 auto;
+            display: block;
+            height: 100%;
+            margin-top: 4rem;
+        }
+
+        .mainInner {
+            display: table;
+            height: 100%;
+            width: 100%;
+            text-align: center;
+        }
+
+        .mainInner div {
+            display: table-cell;
+            vertical-align: middle;
+            font-size: 3rem;
+        }
+
+        #sidebarMenu {
+            height: 100%;
+            position: fixed;
+            left: 8rem;
+            width: 70vw;
+            margin-top: 4rem;
+            transform: translateX(80rem);
+            transition: transform 400ms ease-in-out;
+            background-color: var(--color-accent);
+            z-index: 100;
+        }
+
+        .sidebarMenuInner {
+            margin: 0;
+            padding: 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.10);
+        }
+
+        .sidebarMenuInner li {
+            list-style: none;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+            padding: 2rem;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+        }
+
+        .sidebarMenuInner li span {
+            display: block;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.50);
+        }
+
+        .sidebarMenuInner li a {
+            color: #fff;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1.3rem;
+        }
+
+        input[type="checkbox"]:checked~#sidebarMenu {
+            transform: translateX(0);
+        }
+
+        input[type=checkbox] {
+            transition: all 0.3s;
+            box-sizing: border-box;
+            display: none;
+        }
+
+        .sidebarIconToggle {
+            transition: all 0.3s;
+            box-sizing: border-box;
+            cursor: pointer;
+            position: fixed;
+            z-index: 99;
+            height: 100%;
+            width: 100%;
+            top: 1.5rem;
+            left: 85vw;
+            height: 1.6rem;
+            width: 1.6rem;
+        }
+
+        .spinner {
+            transition: all 0.3s;
+            box-sizing: border-box;
+            position: absolute;
+            height: 0.2rem;
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .horizontal {
+            transition: all 0.3s;
+            box-sizing: border-box;
+            position: relative;
+            float: left;
+            margin-top: 0.3rem;
+        }
+
+        .diagonal.part-1 {
+            position: relative;
+            transition: all 0.3s;
+            box-sizing: border-box;
+            float: left;
+        }
+
+        .diagonal.part-2 {
+            transition: all 0.3s;
+            box-sizing: border-box;
+            position: relative;
+            float: left;
+            margin-top: 0.3rem;
+        }
+
+        input[type=checkbox]:checked~.sidebarIconToggle>.horizontal {
+            transition: all 0.3s;
+            box-sizing: border-box;
+            opacity: 0;
+        }
+
+        input[type=checkbox]:checked~.sidebarIconToggle>.diagonal.part-1 {
+            transition: all 0.3s;
+            box-sizing: border-box;
+            transform: rotate(135deg);
+            margin-top: 0.6rem;
+        }
+
+        input[type=checkbox]:checked~.sidebarIconToggle>.diagonal.part-2 {
+            transition: all 0.3s;
+            box-sizing: border-box;
+            transform: rotate(-135deg);
+            margin-top: -0.6rem;
+        }
+
+
+    /****prototype*****/
+        #prototype {
+            background-color: var(--color-rubrik_light);
+            color: var(--color-tekst_dark);
+        }
+
+        #prototype h1 {
+            padding-top: 5rem;
+        }
+
+        #prototype iframe {
+            width: 350px;
+        }
+
+        #prototype .video {
+            margin: 1rem;
+        }
+
+
+    /****youtube****/
+        #youtube {
+            background-color: var(--color-rubrik_dark);
+            color: var(--color-tekst_light);
+            margin-top: -1rem;
+        }
+
+        #youtube video {
+            margin: 1rem;
+            /*margin-left: 1.5rem;*/
+            width: 90%;
+            margin-top: -1rem;
+
+        }
+
+    /****facebook****/
+
+        #facebook {
+            background-color: var(--color-rubrik_light);
+            color: var(--color-tekst_dark);
+            }
+
+            #facebook video {
+            margin: 1rem;
+            /*margin-left: 1.5rem;*/
+            width: 90%;
+            margin-top: -1rem;
+
+        }
+
+
+    /****instagram****/
+
+        #instagram {
+            background-color: var(--color-rubrik_dark);
+            color: var(--color-tekst_light);
+            padding-bottom: 1.5rem;
+        }
+
+        #instagram video {
+            margin: 1rem;
+            /*margin-left: 1.5rem;*/
+            width: 90%;
+            margin-top: -1rem;
+
+        }
+
+    /***FOOTER**/
+        footer {
+            margin-top: -1rem;
+        }
+
+        footer p.top {
+             color: var(--color-tekst_footer);
+            font-family: 'Titillium Web', sans-serif;
+            padding-top: 2rem;
+            font-weight: 200;
+        }
+
+        footer p.bund {
+             color: var(--color-tekst_footer);
+            font-family: 'Titillium Web', sans-serif;
+            font-weight: 200;
+            margin-top: 0rem;
+            padding-bottom: 1rem;
+        }
+
+        .social {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            margin-bottom: 0.5rem;
+        }
+
+        .social img {
+            width: 56%;
+            margin-left: 2rem;
+            opacity: 0.5;
+            cursor: pointer;
+
+        }
+
+
+
+
+/********************IPAD************************************/
+
+
+        @media only screen and (min-width:600px) {
+
+             h1, h2, h3, nav li a {
+            font-family: 'Titillium Web', sans-serif;
+            font-weight: 300;
+            margin-left: 1rem;
+             margin-top: 0rem;
+            padding-top: 1rem;
+                 font-size: 2rem;
+        }
+
+        p {
+           font-family: 'Open Sans', sans-serif;
+            font-weight: 300;
+            margin-left: 1rem;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+
+        /****BURGERMENU*****/
+
+        .header {
+            height: 6rem;
+        }
+
+        .header img {
+            width: 25%;
+            margin: 0.6rem 0rem 0rem 0.3rem;
+        }
+
+
+        #sidebarMenu {
+            left: 46rem;
+            width: 18rem;
+            margin-top: 6rem;
+        }
+
+
+        .sidebarMenuInner li a {
+            font-size: 1.5rem;
+        }
+
+
+        .sidebarIconToggle {
+            top: 2.5rem;
+            left: 60rem;
+            height: 2rem;
+            width: 2rem;
+        }
+
+
+    /****prototype*****/
+        #prototype {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            padding-top: 6rem;
+        }
+
+        #prototype h1 {
+            padding-top: 1rem;
+        }
+
+        #prototype iframe {
+            width: 500px;
+        }
+
+
+    /****youtube****/
+        #youtube {
+             display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            margin-top: -1rem;
+            padding-top: 1rem;
+            padding-bottom: 2rem;
+        }
+
+        #youtube video {
+            margin-top: 1rem;
+            margin-left: -3.5rem;
+            width: 100%;
+            height: 90%;
+
+        }
+
+
+    /****facebook****/
+
+        #facebook {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            margin-top: -1rem;
+            padding-top: 1rem;
+            padding-bottom: 2rem;
+                margin-top: -1rem;
+            }
+
+            #facebook video {
+             margin-top: 1rem;
+            margin-left: 1rem;
+            width: 85%;
+
+        }
+
+
+    /****instagram****/
+
+        #instagram {
+        display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            margin-top: -1rem;
+            padding-top: 1rem;
+        }
+
+        #instagram video {
+            margin: 1rem;
+            /*margin-left: 1.5rem;*/
+            width: 50%;
+            margin-left: 12.5rem;
+
+
+        }
+
+    /***FOOTER**/
+        footer {
+         display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            margin-top: -1.5rem;
+        }
+
+        footer p.top {
+            font-weight: 300;
+            margin-left: 1.3rem;
+        }
+
+        footer p.bund {
+            font-weight: 300;
+            margin-top: 2.5rem;
+            margin-left: 3rem;
+            padding-top: 1rem;
+            padding-bottom: 2rem;
+            line-height: 3rem;
+        }
+
+            .social img {
+                width: 45%;
+                padding-right: 3rem;
+                margin-left: 1rem;
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+/********************DESKTOP************************************/
+
+
+        @media only screen and (min-width:1025px) {
+
+
+            p {
+                font-size: 1.3rem;
+            }
+
+    /*****NAVGIGATION*******/
+        .header {
+            height: 4.7rem;
+        }
+
+        .header img {
+            width: 16vw;
+            margin: 0.5rem;
+        }
+
+        .main {
+           display: none;
+        }
+
+        .mainInner {
+           display: none;
+        }
+
+        .mainInner div {
+            display: none;
+        }
+
+        #sidebarMenu {
+            display: none;
+        }
+
+        .sidebarMenuInner {
+            display: none;
+        }
+
+        .sidebarMenuInner li span {
+            display: none;
+        }
+
+        .sidebarIconToggle {
+          display: none;
+        }
+
+
+    .sidebarMenuInner li {
+            display: none;
+        }
+
+        .sidebarMenuInner li a {
+            display: none;
+        }
+
+.nav {
+    display: block;
+            }
+
+.nav a {
+    font-size: 1.6rem;
+    text-align: center;
+    display: inline;
+    margin-left: 3rem;
+    margin-bottom: 1em;
+    color: var(--color-tekst_light);
+    text-decoration: none;
+
+
+}
+
+.nav a:hover {
+    color: var(--color-green);
+}
+
+
+ ul {
+    position: fixed;
+    float: right;
+    top: 0.5rem;
+     margin-left: 37rem;
+    /*left: 2rem;*/
+
+    }
+
+.nav li {
+    display: inline;
+    }
+
+
+
+
+    /****prototype*****/
+        #prototype iframe {
+            width: 550px;
+            margin-left: 6rem;
+        }
+
+
+    /****youtube****/
+        #youtube video {
+            margin-left: -1.5rem;
+        }
+
+
+    /****facebook****/
+            #facebook video {
+            margin-left: 11.5rem;
+            width: 67%;
+
+        }
+
+
+    /****instagram****/
+        #instagram video {
+            width: 38%;
+            margin-left: 23rem;
+        }
+
+
+
+
+    /***FOOTER**/
+        footer {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        footer p.top {
+            font-weight: 200;
+            margin-top: 2rem;
+        }
+
+        footer p.bund {
+            font-weight: 200;
+            margin-top: 3.3rem;
+            padding-top: 0rem;
+            padding-bottom: 0rem;
+            line-height: 3.5rem;
+        }
+
+            .social img {
+                width: 40%;
+            }
+
+
+        }
+
+
+        @media only screen and (min-width:1281px) {
+
+            body {
+                background-color: black;
+            }
+            .header img {
+                width: 13vw;
+            }
+
+            .header {
+                max-width: 1280px;
+            }
+
+            footer {
+                background-color: var(--color-navigation);
+                margin-top: -2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-------NAVIGATION------>
+    <header>
+        <nav>
+            <div class="header">
+                <ul class="nav">
+                    <li><a href="#koncept">Kampagne Info</a></li>
+                    <li><a href="#video">Video</a></li>
+                    <li><a href="#quiz">Quiz</a></li>
+                    <li><a href="video.html">Video Portfolio</a></li>
+                </ul>
+                <a href="index.html"><img src="grafik/logo.png" alt="logo"></a>
+            </div>
+            <!-----BURGER IKON------>
+            <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+            <label for="openSidebarMenu" class="sidebarIconToggle">
+                <div class="spinner diagonal part-1"></div>
+                <div class="spinner horizontal"></div>
+                <div class="spinner diagonal part-2"></div>
+            </label>
+            <!-----MENU SLIDE OUT------>
+            <div id="sidebarMenu">
+                <ul class="sidebarMenuInner">
+                    <li><a href="#koncept">Kampagne Info</a></li>
+                    <li><a href="#video">Video</a></li>
+                    <li><a href="#quiz">Quiz</a></li>
+                    <li><a href="video.html">Video Portfolio</a></li>
+                </ul>
+            </div>
+
+        </nav>
+
+    </header>
+
+    <!----------Prototype-------------->
+    <section id="prototype">
+        <h1>Prototype Test</h1>
+        <div class="video">
+            <iframe width="375" height="300" title="prototypetest rådet for sikker trafik kampagne 65+" src="https://www.youtube.com/embed/f-I5lw_tb9Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+    </section>
+
+    <!-------youtube------>
+    <section id="youtube">
+        <h1>Youtube Video</h1>
+        <div class="video>">
+            <video width="320" height="240" controls>
+                <source src="video/youtube_video.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
+
+    <!-------facebook------>
+    <section id="facebook">
+        <h1>Facebook Video</h1>
+        <div class="video">
+            <video width="320" height="240" controls>
+                <source src="video/facebook_video.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
+
+    <!-----instagram---->
+    <section id="instagram">
+        <h1>Instagram Video</h1>
+        <div class="video">
+            <video width="320" height="240" controls>
+                <source src="video/insta_video.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
+
+    <footer>
+        <div>
+            <p class="top">Følg Rådet for Sikker Trafik på de sociale medier</p>
+            <div class="social">
+                <a href="https://www.facebook.com/sikkertrafik/">
+                    <img src="grafik/social/facebook.svg" alt="rådet for sikker trafik facebook">
+                </a>
+
+                <a href="https://www.instagram.com/raadet_for_sikkertrafik/?hl=en">
+                    <img src="grafik/social/instagram.svg" alt="rådet for sikker trafik facebook">
+                </a>
+
+                <a href="https://www.youtube.com/user/Sikkertrafik">
+                    <img src="grafik/social/youtube.svg" alt="rådet for sikker trafik facebook">
+                </a>
+            </div>
+        </div>
+
+        <p class="bund">Rådet for Sikker Trafik <br> Lersø Parkallé 111, 2100 København Ø</p>
+
+    </footer>
+    <script>
+
+    </script>
+</body>
+
+</html>
